@@ -223,4 +223,14 @@ All colors MUST be HSL for consistency.
     66% { transform: translateY(-10px) translateX(-10px); }
     100% { transform: translateY(0) translateX(0); }
   }
+
+  /* Scrollbar hiding utilities */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
