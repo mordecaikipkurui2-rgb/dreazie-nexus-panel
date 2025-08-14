@@ -13,7 +13,7 @@ export const DashboardHeader = ({ onSidebarToggle, isMobile }: DashboardHeaderPr
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
-    <header className="fixed top-0 left-0 right-0 h-16 glass border-b border-primary/20 px-4 md:px-6 flex items-center justify-between z-30">
+    <header className="fixed top-0 right-0 h-16 glass border-b border-primary/20 px-4 md:px-6 flex items-center justify-between z-30 left-0 md:left-64">
       {/* Mobile menu button & Search Section */}
       <div className="flex items-center gap-4 flex-1">
         {isMobile && (
