@@ -88,7 +88,7 @@ export const DashboardHeader = ({ onSidebarToggle, onSidebarCollapse, sidebarCol
         <Button 
           variant="ghost" 
           className="hidden sm:flex items-center gap-2 pl-3 border-l border-primary/20 h-auto p-2"
-          onClick={() => navigate('/profile')}
+          onClick={() => navigate('/dashboard/profile')}
         >
           <div className="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center">
             <User className="h-4 w-4 text-primary-foreground" />

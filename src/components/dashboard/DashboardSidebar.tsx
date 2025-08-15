@@ -7,6 +7,7 @@ import {
   Shield,
   Heart 
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import {
   Sidebar,
   SidebarContent,
@@ -18,7 +19,6 @@ import {
 
 interface DashboardSidebarProps {
   activeSection: string;
-  onSectionChange: (section: string) => void;
   isOpen: boolean;
   onToggle: () => void;
   isCollapsed: boolean;
@@ -27,23 +27,23 @@ interface DashboardSidebarProps {
 }
 
 const menuItems = [
-  { id: "overview", label: "Overview", icon: BarChart3 },
-  { id: "agents", label: "Agents", icon: UserCheck },
-  { id: "users", label: "Users", icon: Users },
-  { id: "payments", label: "Payments", icon: CreditCard },
-  { id: "security", label: "Security", icon: Shield },
-  { id: "settings", label: "Settings", icon: Settings },
+  { id: "overview", label: "Overview", icon: BarChart3, path: "/dashboard/overview" },
+  { id: "agents", label: "Agents", icon: UserCheck, path: "/dashboard/agents" },
+  { id: "users", label: "Users", icon: Users, path: "/dashboard/users" },
+  { id: "payments", label: "Payments", icon: CreditCard, path: "/dashboard/payments" },
+  { id: "security", label: "Security", icon: Shield, path: "/dashboard/security" },
+  { id: "settings", label: "Settings", icon: Settings, path: "/dashboard/settings" },
 ];
 
 export const DashboardSidebar = ({ 
   activeSection, 
-  onSectionChange, 
   isOpen, 
   onToggle, 
   isCollapsed,
   onCollapsedChange,
   isMobile 
 }: DashboardSidebarProps) => {
+  const navigate = useNavigate();
   
   if (isMobile) {
     return (
@@ -80,7 +80,7 @@ export const DashboardSidebar = ({
                   <SidebarMenuItem key={item.id}>
                     <SidebarMenuButton
                       onClick={() => {
-                        onSectionChange(item.id);
+                        navigate(item.path);
                         onToggle();
                       }}
                       className={`
@@ -125,7 +125,7 @@ export const DashboardSidebar = ({
           {menuItems.map((item) => (
             <SidebarMenuItem key={item.id}>
               <SidebarMenuButton
-                onClick={() => onSectionChange(item.id)}
+                onClick={() => navigate(item.path)}
                 className={`
                   w-full ${isCollapsed ? 'justify-center' : 'justify-start'} gap-3 p-3 rounded-lg transition-all duration-300
                   ${activeSection === item.id 
