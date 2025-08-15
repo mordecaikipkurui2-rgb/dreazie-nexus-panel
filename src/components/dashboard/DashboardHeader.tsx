@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Search, Bell, User, Settings, Menu, PanelLeftClose, PanelLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -14,7 +13,6 @@ interface DashboardHeaderProps {
 
 export const DashboardHeader = ({ onSidebarToggle, onSidebarCollapse, sidebarCollapsed, isMobile }: DashboardHeaderProps) => {
   const [searchQuery, setSearchQuery] = useState("");
-  const navigate = useNavigate();
 
   return (
     <header className={`fixed top-0 right-0 h-16 glass border-b border-primary/20 px-4 md:px-6 flex items-center justify-between z-30 left-0 transition-all duration-300 ${
@@ -81,24 +79,18 @@ export const DashboardHeader = ({ onSidebarToggle, onSidebarCollapse, sidebarCol
           </Badge>
         </Button>
         
-        <Button variant="ghost" size="icon" onClick={() => navigate("/settings")}>
+        <Button variant="ghost" size="icon">
           <Settings className="h-5 w-5" />
         </Button>
         
         <div className="hidden sm:flex items-center gap-2 pl-3 border-l border-primary/20">
-          <Button 
-            variant="ghost" 
-            className="flex items-center gap-2 p-2 hover:bg-muted/50" 
-            onClick={() => navigate("/profile")}
-          >
-            <div className="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center">
-              <User className="h-4 w-4 text-primary-foreground" />
-            </div>
-            <div className="hidden md:block text-sm">
-              <div className="font-medium text-foreground">Admin</div>
-              <div className="text-xs text-muted-foreground">Super User</div>
-            </div>
-          </Button>
+          <div className="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center">
+            <User className="h-4 w-4 text-primary-foreground" />
+          </div>
+          <div className="hidden md:block text-sm">
+            <div className="font-medium text-foreground">Admin</div>
+            <div className="text-xs text-muted-foreground">Super User</div>
+          </div>
         </div>
       </div>
     </header>
