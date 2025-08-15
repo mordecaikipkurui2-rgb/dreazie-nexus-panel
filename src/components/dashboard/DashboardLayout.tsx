@@ -14,7 +14,7 @@ export const DashboardLayout = () => {
 
   return (
     <SidebarProvider open={!sidebarCollapsed} onOpenChange={(open) => setSidebarCollapsed(!open)}>
-      <div className="min-h-screen flex w-full bg-gradient-background tech-pattern particles overflow-hidden">
+      <div className="min-h-screen flex w-full bg-gradient-background tech-pattern particles overflow-hidden" style={{ "--sidebar-width-icon": "80px" } as React.CSSProperties}>
         <DashboardSidebar 
           activeSection={activeSection} 
           onSectionChange={setActiveSection}

@@ -16,7 +16,7 @@ export const DashboardHeader = ({ onSidebarToggle, onSidebarCollapse, sidebarCol
 
   return (
     <header className={`fixed top-0 right-0 h-16 glass border-b border-primary/20 px-4 md:px-6 flex items-center justify-between z-30 left-0 transition-all duration-300 ${
-      isMobile ? 'md:left-0' : sidebarCollapsed ? 'md:left-12' : 'md:left-64'
+      isMobile ? 'md:left-0' : sidebarCollapsed ? 'md:left-20' : 'md:left-64'
     }`}>
       {/* Desktop collapse button & Mobile menu button & Search Section */}
       <div className="flex items-center gap-4 flex-1">
