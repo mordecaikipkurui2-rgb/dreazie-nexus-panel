@@ -25,7 +25,7 @@ export const DashboardLayout = () => {
           isMobile={isMobile}
         />
         <div className={`flex-1 flex flex-col min-w-0 transition-all duration-300 ${
-          isMobile ? '' : sidebarCollapsed ? 'ml-16' : 'ml-64'
+          isMobile ? '' : sidebarCollapsed ? 'ml-[65px]' : 'ml-[257px]'
         }`}>
           <DashboardHeader 
             onSidebarToggle={() => setSidebarOpen(!sidebarOpen)}
