@@ -13,7 +13,7 @@ export const DashboardLayout = () => {
   const isMobile = useIsMobile();
 
   return (
-    <SidebarProvider>
+    <SidebarProvider open={!sidebarCollapsed} onOpenChange={(open) => setSidebarCollapsed(!open)}>
       <div className="min-h-screen flex w-full bg-gradient-background tech-pattern particles overflow-hidden">
         <DashboardSidebar 
           activeSection={activeSection} 

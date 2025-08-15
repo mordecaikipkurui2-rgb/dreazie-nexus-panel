@@ -105,9 +105,7 @@ export const DashboardSidebar = ({
   }
 
   return (
-    <Sidebar className={`glass border-r border-primary/20 hidden md:block transition-all duration-300 ${
-      isCollapsed ? 'w-16' : 'w-64'
-    }`}>
+    <Sidebar collapsible="icon" className="glass border-r border-primary/20 hidden md:block transition-all duration-300">
       <SidebarHeader className="p-6 border-b border-primary/20">
         <div className="flex items-center gap-3">
           <div className="p-2 rounded-lg bg-gradient-primary">
