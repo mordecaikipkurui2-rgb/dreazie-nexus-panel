@@ -105,7 +105,7 @@ export const DashboardSidebar = ({
   }
 
   return (
-    <Sidebar className={`glass border-r border-primary/20 hidden md:block fixed left-0 top-0 h-full z-40 transition-all duration-300 ${
+    <Sidebar className={`glass border-r border-primary/20 hidden md:block transition-all duration-300 ${
       isCollapsed ? 'w-16' : 'w-64'
     }`}>
       <SidebarHeader className="p-6 border-b border-primary/20">
