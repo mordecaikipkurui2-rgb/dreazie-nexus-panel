@@ -1,21 +1,38 @@
 import { useState } from "react";
-import { Search, Bell, User, Settings, Menu } from "lucide-react";
+import { Search, Bell, User, Settings, Menu, PanelLeftClose, PanelLeft } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 interface DashboardHeaderProps {
   onSidebarToggle: () => void;
+  onSidebarCollapse: () => void;
+  sidebarCollapsed: boolean;
   isMobile: boolean;
 }
 
-export const DashboardHeader = ({ onSidebarToggle, isMobile }: DashboardHeaderProps) => {
+export const DashboardHeader = ({ onSidebarToggle, onSidebarCollapse, sidebarCollapsed, isMobile }: DashboardHeaderProps) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
-    <header className="fixed top-0 right-0 h-16 glass border-b border-primary/20 px-4 md:px-6 flex items-center justify-between z-30 left-0 md:left-64">
-      {/* Mobile menu button & Search Section */}
+    <header className={`fixed top-0 right-0 h-16 glass border-b border-primary/20 px-4 md:px-6 flex items-center justify-between z-30 left-0 transition-all duration-300 ${
+      isMobile ? 'md:left-0' : sidebarCollapsed ? 'md:left-16' : 'md:left-64'
+    }`}>
+      {/* Desktop collapse button & Mobile menu button & Search Section */}
       <div className="flex items-center gap-4 flex-1">
+        {/* Desktop collapse toggle - only visible on large screens */}
+        {!isMobile && (
+          <Button 
+            variant="ghost" 
+            size="icon"
+            onClick={onSidebarCollapse}
+            className="hidden md:flex"
+          >
+            {sidebarCollapsed ? <PanelLeft className="h-5 w-5" /> : <PanelLeftClose className="h-5 w-5" />}
+          </Button>
+        )}
+        
+        {/* Mobile menu button - only visible on small screens */}
         {isMobile && (
           <Button 
             variant="ghost" 

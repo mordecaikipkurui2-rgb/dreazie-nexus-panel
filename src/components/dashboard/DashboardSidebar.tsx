@@ -21,6 +21,8 @@ interface DashboardSidebarProps {
   onSectionChange: (section: string) => void;
   isOpen: boolean;
   onToggle: () => void;
+  isCollapsed: boolean;
+  onCollapsedChange: (collapsed: boolean) => void;
   isMobile: boolean;
 }
 
@@ -38,6 +40,8 @@ export const DashboardSidebar = ({
   onSectionChange, 
   isOpen, 
   onToggle, 
+  isCollapsed,
+  onCollapsedChange,
   isMobile 
 }: DashboardSidebarProps) => {
   
@@ -101,16 +105,20 @@ export const DashboardSidebar = ({
   }
 
   return (
-    <Sidebar className="glass border-r border-primary/20 hidden md:block">
+    <Sidebar className={`glass border-r border-primary/20 hidden md:block transition-all duration-300 ${
+      isCollapsed ? 'w-16' : 'w-64'
+    }`}>
       <SidebarHeader className="p-6 border-b border-primary/20">
         <div className="flex items-center gap-3">
           <div className="p-2 rounded-lg bg-gradient-primary">
             <Heart className="h-6 w-6 text-primary-foreground" />
           </div>
-          <div>
-            <h1 className="text-xl font-bold text-foreground">Dreazie</h1>
-            <p className="text-sm text-muted-foreground">Admin Dashboard</p>
-          </div>
+          {!isCollapsed && (
+            <div>
+              <h1 className="text-xl font-bold text-foreground">Dreazie</h1>
+              <p className="text-sm text-muted-foreground">Admin Dashboard</p>
+            </div>
+          )}
         </div>
       </SidebarHeader>
       
@@ -121,15 +129,16 @@ export const DashboardSidebar = ({
               <SidebarMenuButton
                 onClick={() => onSectionChange(item.id)}
                 className={`
-                  w-full justify-start gap-3 p-3 rounded-lg transition-all duration-300
+                  w-full ${isCollapsed ? 'justify-center' : 'justify-start'} gap-3 p-3 rounded-lg transition-all duration-300
                   ${activeSection === item.id 
                     ? 'bg-gradient-primary text-primary-foreground neon-glow' 
                     : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
                   }
                 `}
+                title={isCollapsed ? item.label : undefined}
               >
                 <item.icon className="h-5 w-5" />
-                <span className="font-medium">{item.label}</span>
+                {!isCollapsed && <span className="font-medium">{item.label}</span>}
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
